@@ -18,10 +18,25 @@ services:
     restart: unless-stopped
     volumes:
     - database:/var/lib/postgresql/data
+
+  redis:
+    image: docker.io/library/redis:alpine
+    command: --save 60 1 --loglevel warning
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep PONG"]
+      interval: 30s
+      timeout: 3s
+      retries: 5
+    volumes:
+    - redis:/data
+
   server:
     command: server
     depends_on:
       postgresql:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     env_file:
     - .env
@@ -31,6 +46,7 @@ services:
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
+      AUTHENTIK_REDIS__HOST: redis
     image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2026.2.1}
     ports:
     - ${COMPOSE_PORT_HTTP:-9000}:9000
@@ -40,10 +56,13 @@ services:
     volumes:
     - ./data:/data
     - ./custom-templates:/templates
+
   worker:
     command: worker
     depends_on:
       postgresql:
+        condition: service_healthy
+      redis:
         condition: service_healthy
     env_file:
     - .env
@@ -53,6 +72,7 @@ services:
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
+      AUTHENTIK_REDIS__HOST: redis
     image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2026.2.1}
     restart: unless-stopped
     shm_size: 512mb
@@ -62,6 +82,23 @@ services:
     - ./data:/data
     - ./certs:/certs
     - ./custom-templates:/templates
+
+  ldap:
+    # Note: separate image from the main server — do not use AUTHENTIK_IMAGE here
+    image: ghcr.io/goauthentik/ldap:${AUTHENTIK_TAG:-2026.2.1}
+    restart: unless-stopped
+    ports:
+    - 389:3389
+    - 636:6636
+    environment:
+      AUTHENTIK_HOST: ${AUTHENTIK_HOST:?authentik host required}
+      AUTHENTIK_INSECURE: "false"
+      AUTHENTIK_TOKEN: ${AUTHENTIK_LDAP_TOKEN:?LDAP outpost token required}
+    depends_on:
+    - server
+
 volumes:
   database:
+    driver: local
+  redis:
     driver: local
