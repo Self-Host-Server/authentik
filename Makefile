@@ -13,6 +13,12 @@ update:
 	else \
 		echo "No .env found, skipping AUTHENTIK_TAG update (set AUTHENTIK_TAG=$(LATEST_TAG) manually)"; \
 	fi
+	@if ! git diff --quiet -- compose.yml; then \
+		git add compose.yml; \
+		git commit -m "Bump authentik image tag to $(LATEST_TAG)"; \
+	else \
+		echo "compose.yml unchanged, nothing to commit"; \
+	fi
 
 up:
 	docker compose up -d
