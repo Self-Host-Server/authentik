@@ -16,7 +16,9 @@ update:
 	else \
 		echo "No .env found, skipping AUTHENTIK_TAG update (set AUTHENTIK_TAG=$(LATEST_TAG) manually)"; \
 	fi
-	@if ! git diff --quiet -- $(COMPOSE_FILE); then \
+	@if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
+		echo "Not a git repository, skipping commit"; \
+	elif ! git diff --quiet -- $(COMPOSE_FILE); then \
 		git add $(COMPOSE_FILE); \
 		git commit -m "Bump authentik image tag to $(LATEST_TAG)"; \
 	else \
