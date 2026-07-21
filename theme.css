@@ -1487,16 +1487,14 @@ ak-loading-overlay {
   background-attachment: fixed !important;
 }
 
-/* HIJACK ADMIN PANEL: Remove background image in admin interface */
-:host(ak-interface-admin) .pf-c-page {
-  background-image: none !important;
-  background-color: var(--pf-global--BackgroundColor--100) !important;
-}
+/* Admin panel now shares the same background image as the rest of the theme
+   (it inherits the unscoped .pf-c-page rule above; no override needed here). */
 
 /* DASHBOARD TRANSPARENCY FIX */
 /* Force variables to transparent inside the library/dashboard host AND user interface wrapper */
 :host(ak-library-impl),
-:host(ak-interface-user) {
+:host(ak-interface-user),
+:host(ak-interface-admin) {
   --pf-global--BackgroundColor--100: transparent !important;
   --pf-c-page--BackgroundColor: transparent !important;
   --pf-c-page__main-section--BackgroundColor: transparent !important;
@@ -1518,7 +1516,12 @@ ak-loading-overlay {
 :host(ak-library-impl) .pf-c-drawer__content,
 :host(ak-library-impl) .pf-c-drawer__main,
 :host(ak-interface-user) .pf-c-page,
-:host(ak-interface-user) .pf-c-page__main {
+:host(ak-interface-user) .pf-c-page__main,
+:host(ak-interface-admin) .pf-c-page,
+:host(ak-interface-admin) .pf-c-page__main,
+:host(ak-interface-admin) .pf-c-page__main-section,
+:host(ak-interface-admin) .pf-c-drawer__content,
+:host(ak-interface-admin) .pf-c-drawer__main {
   background: transparent !important;
   background-color: transparent !important;
 }
@@ -1590,8 +1593,10 @@ ak-loading-overlay {
   padding-right: 40px !important;
 }
 
-/* ===== ADMIN INTERFACE PRESERVATION ===== */
-/* Reset sensitive admin elements to avoid breaking them */
+/* ===== ADMIN INTERFACE GLASS STYLING ===== */
+/* Same glassmorphism look as the rest of the theme, but sizing/layout stays
+   native (auto width, no transform, no display:block) since these buttons and
+   inputs live in dense tables/toolbars where the login-flow sizing would break. */
 
 [data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain,
 [data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-secondary,
@@ -1600,13 +1605,27 @@ ak-loading-overlay {
   min-width: 0 !important;
   height: auto !important;
   transform: none !important;
-  background: var(
-    --pf-c-button--m-plain--BackgroundColor,
-    transparent
-  ) !important;
-  border: none !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  color: white !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain {
+  background: transparent !important;
+  border-color: transparent !important;
   box-shadow: none !important;
-  color: var(--pf-c-button--m-plain--Color, inherit) !important;
+}
+
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-primary:hover,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-secondary:hover,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 [data-ak-interface-root="ak-interface-admin"] .pf-c-select__toggle,
@@ -1614,12 +1633,13 @@ ak-loading-overlay {
   height: auto !important;
   min-height: 0 !important;
   padding: initial !important;
-  background: var(--pf-c-form-control--BackgroundColor, #fff) !important;
-  border: 1px solid var(--pf-c-form-control--BorderColor, #ccc) !important;
-  border-radius: var(--pf-c-form-control--BorderRadius, 3px) !important;
-  backdrop-filter: none !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   box-shadow: none !important;
-  color: var(--pf-c-form-control--Color, initial) !important;
+  color: white !important;
 }
 
 /* ===== ADMIN BUTTON STYLING ===== */
