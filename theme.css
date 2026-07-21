@@ -1601,9 +1601,15 @@ ak-loading-overlay {
 /* Dashboard widgets (Quick actions, Outpost status, Recent events, etc.) had no
    card background at all once the page background image was allowed through,
    leaving text sitting directly on the image. Use a dark tint (not the lighter
-   glass used elsewhere) so white text stays legible over the busy background. */
-:host(ak-interface-admin) .pf-c-card,
-:host(ak-interface-admin) ak-aggregate-card {
+   glass used elsewhere) so white text stays legible over the busy background.
+   Bare (non-:host()) selectors, same as the existing .pf-c-card.pf-m-compact
+   rule above, since these widgets render inside their own nested shadow roots
+   that :host(ak-interface-admin) can't reach. */
+.pf-c-card,
+ak-aggregate-card {
+  position: relative !important;
+  overflow: hidden !important;
+  height: auto !important;
   background: rgba(0, 0, 0, 0.45) !important;
   backdrop-filter: blur(16px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
@@ -1612,10 +1618,9 @@ ak-loading-overlay {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
 }
 
-:host(ak-interface-admin) .pf-c-card__title,
-:host(ak-interface-admin) .pf-c-card__body,
-:host(ak-interface-admin) .pf-c-card__header,
-:host(ak-interface-admin) .pf-c-title {
+.pf-c-card__title,
+.pf-c-card__body,
+.pf-c-card__header {
   color: white !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
 }
