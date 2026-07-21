@@ -20,6 +20,8 @@ make format       # prettier over json/yml/md/scss
 
 Commit both the changed partial(s) under `theme/` and the regenerated `theme.css` in the same PR.
 
+`theme.css` is a generated file - it can only change alongside a matching `theme/*.scss` change, and only via `make theme`. Run `make hooks` once (per clone) to install a pre-commit hook that rebuilds `theme.css` from `theme/*.scss` and blocks the commit if they don't match; the same check runs in CI on every push/PR touching `theme/` or `theme.css` as a backstop.
+
 ## Editing the Compose stack
 
 `compose.yml` is normally managed by `make update` (pulls the latest upstream compose file and bumps `AUTHENTIK_TAG`). If you hand-edit it instead, keep it close to upstream so future `make update` runs stay a clean diff.

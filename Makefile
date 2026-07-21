@@ -1,4 +1,4 @@
-.PHONY: update up theme format
+.PHONY: update up theme format hooks
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
@@ -37,3 +37,10 @@ theme:
 
 format:
 	npx --no-install prettier --write "**/*.{json,yml,yaml,md,scss}"
+
+# One-time setup: point git at the tracked hooks in .githooks/ so the
+# pre-commit theme.css consistency check runs locally too (also enforced
+# in CI regardless of whether this has been run).
+hooks:
+	git config core.hooksPath .githooks
+	chmod +x .githooks/pre-commit

@@ -1,0 +1,24 @@
+#!/bin/sh
+# Blocks commits where theme.css doesn't match `make theme`'s output from
+# theme/*.scss - theme.css must never be hand-edited or left stale.
+set -e
+
+if git diff --cached --quiet -- theme.css theme/; then
+  exit 0
+fi
+
+if ! command -v npx >/dev/null 2>&1; then
+  echo "pre-commit: npx not found on PATH, skipping theme.css consistency check" >&2
+  echo "pre-commit: this WILL still be checked in CI" >&2
+  exit 0
+fi
+
+tmp=$(mktemp)
+npx --no-install sass theme/theme.scss "$tmp" --style=expanded --no-source-map --quiet
+if ! diff -q "$tmp" theme.css >/dev/null 2>&1; then
+  echo "error: theme.css is out of sync with theme/*.scss" >&2
+  echo "Run 'make theme' and re-stage theme.css before committing." >&2
+  rm -f "$tmp"
+  exit 1
+fi
+rm -f "$tmp"

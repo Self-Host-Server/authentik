@@ -1,0 +1,34 @@
+name: Theme consistency
+
+on:
+  pull_request:
+    paths:
+      - "theme/**"
+      - "theme.css"
+  push:
+    branches: [main]
+    paths:
+      - "theme/**"
+      - "theme.css"
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Rebuild theme.css from theme/*.scss
+        run: npx --no-install sass theme/theme.scss /tmp/theme-built.css --style=expanded --no-source-map
+
+      - name: Fail if committed theme.css is stale or hand-edited
+        run: |
+          if ! diff -u theme.css /tmp/theme-built.css; then
+            echo "::error file=theme.css::theme.css does not match the output of 'make theme' from theme/*.scss. Run 'make theme' locally, commit the rebuilt file, and push again."
+            exit 1
+          fi
