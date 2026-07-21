@@ -13,7 +13,7 @@ Self-hosted [authentik](https://goauthentik.io/) deployment via Docker Compose, 
 
 ## Getting started
 
-```
+```bash
 cp .env.sample .env
 # edit .env: PG_PASS, AUTHENTIK_SECRET_KEY, AUTHENTIK_HOST, etc.
 make up
@@ -32,7 +32,7 @@ authentik will be available on the ports set by `COMPOSE_PORT_HTTP`/`COMPOSE_POR
 
 The theme build needs Node with the `sass` and `prettier` packages (declared in `package.json`):
 
-```
+```bash
 npm install
 make theme    # rebuild theme.css from theme/*.scss
 make format   # format theme/*.scss and other files
