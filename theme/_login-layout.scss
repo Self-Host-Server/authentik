@@ -1,0 +1,87 @@
+/* ===== LOGIN PAGE MODERN DESIGN ===== */
+
+/* Page Background */
+.pf-c-login .pf-c-page,
+body:has(.pf-c-login) .pf-c-page {
+  /* Fixed background workaround for iOS */
+  position: relative !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  z-index: 0 !important;
+}
+
+.pf-c-login .pf-c-page::before,
+body:has(.pf-c-login) .pf-c-page::before,
+body::before {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: var(--ak-flow-background) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* Login page wrapper */
+.pf-c-login,
+body:has(.pf-c-login) {
+  position: relative !important;
+  min-height: 100vh !important;
+  /* SAFEST CENTER ALIGNMENT */
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  /* justify-content: center REMOVED: prevents top clipping */
+  overflow-y: auto !important;
+  padding: 20px !important;
+}
+
+/* Login Container with Glass effect */
+.pf-c-login .pf-c-login__container,
+ak-flow-executor.pf-c-login {
+  background:
+    rgba(255, 255, 255, 0.03),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E") !important;
+  backdrop-filter: blur(40px) !important;
+  -webkit-backdrop-filter: blur(40px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  padding: 40px !important;
+  /* Reduced padding */
+  /* Desktop default: 450px min-width */
+  min-width: 450px !important;
+  /* Combined with max-width for responsiveness */
+  width: 100% !important;
+  max-width: 700px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+
+  /* THE MAGICAL FIX: Safe Centering */
+  margin: auto !important;
+
+  /* STRICT SIZING: Prevent stretching */
+  height: auto !important;
+  flex-grow: 0 !important;
+  flex-shrink: 0 !important;
+  flex-basis: auto !important;
+
+  max-height: none !important;
+  overflow: visible !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+
+  /* NUCLEAR SAFEGUARD */
+  align-self: center !important;
+  justify-self: center !important;
+}
+

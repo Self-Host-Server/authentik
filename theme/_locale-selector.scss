@@ -1,0 +1,103 @@
+/* ===== LANGUAGE / LOCALE SELECTOR ===== */
+/* The authentik update moved the locale switcher to the top-left corner where it
+   stuck out of the rounded login box, and its native <select> dropdown wasn't themed. */
+
+/* Nudge the switcher comfortably inside the rounded box (both axes) */
+:host(ak-locale-select) {
+  left: 48px !important;
+  top: 60px !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: auto !important;
+  z-index: 100 !important;
+}
+
+/* Keep the translate icon (label) white, but let clicks pass THROUGH it to the
+   select underneath — otherwise the icon intercepts the click and the dropdown
+   never opens. */
+:host(ak-locale-select) label[part="label"] {
+  color: #ffffff !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+}
+
+/* Clean, transparent trigger. Left padding clears the absolute translate icon. */
+:host(ak-locale-select) select[part="select"],
+:host(ak-locale-select) select {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  padding: 4px 8px 4px 30px !important;
+  font-size: 14px !important;
+  gap: 8px !important;
+}
+
+/* --- Modern customizable-select API (Chrome 135+/2025): fully theme the popup --- */
+:host(ak-locale-select) select[part="select"],
+:host(ak-locale-select) select[part="select"]::picker(select) {
+  appearance: base-select !important;
+}
+
+:host(ak-locale-select) select[part="select"]::picker-icon {
+  color: #ffffff !important;
+  opacity: 0.8 !important;
+}
+
+/* The dropdown popup itself: dark glassmorphism panel */
+:host(ak-locale-select) select[part="select"]::picker(select) {
+  background: rgba(18, 20, 26, 0.55) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(140%) !important;
+  backdrop-filter: blur(22px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 10px 34px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  padding: 6px !important;
+  margin-top: 6px !important;
+  /* Pin the width to the content so the popup doesn't reflow/shrink on hover
+       (by default it anchors to the narrow trigger width). */
+  width: max-content !important;
+  min-width: 220px !important;
+  box-sizing: border-box !important;
+}
+
+:host(ak-locale-select) select[part="select"] option {
+  background: transparent !important;
+  color: #ffffff !important;
+  border-radius: 10px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+  text-shadow: none !important;
+  white-space: nowrap !important;
+  box-sizing: border-box !important;
+}
+
+/* Transparent list: highlight ONLY on hover, no persistent grey box on the
+   selected item (the checkmark already marks the active language). */
+:host(ak-locale-select) select[part="select"] option:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+}
+
+:host(ak-locale-select) select[part="select"] option:checked {
+  background: transparent !important;
+}
+
+:host(ak-locale-select) select[part="select"] option::checkmark {
+  color: #ffffff !important;
+}
+
+/* --- Fallback for browsers without base-select: give the native popup a dark look --- */
+@supports not (appearance: base-select) {
+  :host(ak-locale-select) select option {
+    background-color: #16181d !important;
+    color: #ffffff !important;
+  }
+  :host(ak-locale-select) select option:checked {
+    background-color: #2a2d34 !important;
+  }
+}

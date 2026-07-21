@@ -1,0 +1,93 @@
+/* ===== TOTP COPY BUTTON STYLE (NEUTRAL WHITE) ===== */
+:host(ak-stage-authenticator-totp) .pf-c-button.pf-m-secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  margin-top: 5px !important;
+}
+
+:host(ak-stage-authenticator-totp) .pf-c-button.pf-m-secondary:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Remove reflection for this specific button to avoid glitches */
+:host(ak-stage-authenticator-totp) .pf-c-button.pf-m-secondary::before,
+:host(ak-stage-authenticator-totp) .pf-c-button.pf-m-secondary::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Fix icon positioning (it was absolute, causing overlap) */
+:host(ak-stage-authenticator-totp)
+  .pf-c-button.pf-m-secondary
+  .pf-c-button__progress {
+  position: static !important;
+  transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+:host(ak-stage-authenticator-totp) .qr-container {
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 10px 0 !important;
+  border-radius: 0 !important;
+}
+
+:host(ak-stage-authenticator-totp) qr-code {
+  /* Only the QR code gets the fixed white box */
+  max-width: 150px !important;
+  width: 150px !important;
+  height: 150px !important;
+  margin: 0 0 15px 0 !important;
+  /* Bottom margin to push button down */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  background: white !important;
+  overflow: hidden !important;
+}
+
+:host(ak-stage-authenticator-totp) qr-code svg {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* Réduire la taille du texte explicatif sur la page TOTP */
+:host(ak-stage-authenticator-totp) .pf-c-form__group:not([hidden]) p,
+:host(ak-stage-authenticator-totp) .pf-c-form__group:not([hidden]) li {
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+  opacity: 0.9 !important;
+  margin-bottom: 8px !important;
+}
+
+/* Réduire un peu le titre du QR code container si présent */
+:host(ak-stage-authenticator-totp) .pf-c-form__group label {
+  font-size: 14px !important;
+  margin-bottom: 4px !important;
+}

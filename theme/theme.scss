@@ -1,0 +1,27 @@
+/*
+   This theme implements a modern glassmorphism look for Authentik.
+   It overrides standard PatternFly and Authentik components.
+   Please upload the COMPILED theme.css (repo root, built from this file via
+   `make theme`) in the Authentik Admin Interface -> Customization -> Blueprints/Files.
+   Do not edit theme.css by hand - edit the partials in theme/ and rebuild.
+*/
+
+@use "variables";
+@use "totp";
+@use "dark-mode";
+@use "login-buttons";
+@use "remember-me";
+@use "hide-branding";
+@use "login-layout";
+@use "shadow-dom-fixes";
+@use "branding-logo";
+@use "text-inputs";
+@use "locale-selector";
+@use "buttons-stages";
+@use "scrollbar";
+@use "dashboard";
+@use "background-overlay";
+@use "admin-interface";
+@use "chips-icons";
+@use "social-login-external";
+@use "responsive";

@@ -1,4 +1,4 @@
-.PHONY: update up
+.PHONY: update up theme
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
@@ -27,3 +27,10 @@ update:
 
 up:
 	docker compose up -d
+
+# Compile the SCSS partials in theme/ into the single theme.css uploaded via
+# Admin Interface -> Customization -> Blueprints/Files. Requires the `sass`
+# CLI (dart-sass) on PATH.
+theme:
+	@command -v sass >/dev/null || (echo "sass not found on PATH (install dart-sass, e.g. via conda)" && exit 1)
+	sass theme/theme.scss theme.css --style=expanded --no-source-map

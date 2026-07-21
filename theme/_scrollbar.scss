@@ -1,0 +1,29 @@
+/* ===== UI GLOBAL (SCROLLBAR) ===== */
+
+:root {
+  --sb-size: 10px;
+  --sb-radius: 12px;
+  --sb-track: rgba(255, 255, 255, 0.06);
+  --sb-thumb: rgba(255, 255, 255, 0.28);
+  --sb-thumb-hover: rgba(255, 255, 255, 0.42);
+  --sb-thumb-active: rgba(255, 255, 255, 0.55);
+}
+
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track);
+  border-radius: var(--sb-radius);
+  margin: 4px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: var(--sb-radius);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+

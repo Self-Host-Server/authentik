@@ -1,0 +1,183 @@
+/* Primary Button Login - Shadow DOM targeted */
+:host(ak-stage-identification) .pf-c-button.pf-m-primary,
+:host(ak-stage-password) .pf-c-button.pf-m-primary,
+:host(ak-stage-consent) .pf-c-button.pf-m-primary,
+:host(ak-stage-identification) button.pf-m-primary,
+:host(ak-stage-password) button.pf-m-primary,
+:host(ak-stage-authenticator-validate) .pf-c-button.pf-m-primary,
+:host(ak-stage-authenticator-validate-code) .pf-c-button.pf-m-primary,
+:host(ak-stage-authenticator-totp) .pf-c-button.pf-m-primary,
+:host(ak-stage-authenticator-validate-duo) .pf-c-button.pf-m-primary,
+:host(ak-stage-authenticator-validate-webauthn) .pf-c-button.pf-m-primary,
+:host(ak-user-settings) .pf-c-button.pf-m-primary,
+:host(ak-user-settings-flow-executor) .pf-c-button.pf-m-primary,
+:host(ak-user-settings-password) .pf-c-button.pf-m-primary,
+:host(ak-user-stage-prompt) .pf-c-button.pf-m-primary,
+:host(ak-form-element-horizontal) .pf-c-button.pf-m-primary,
+:host(ak-stage-authenticator-static) .pf-c-button.pf-m-primary,
+:host(ak-stage-prompt) .pf-c-button.pf-m-primary,
+/* FIX: Connect Button in User Settings */
+:host(ak-user-settings-source-oauth) .pf-c-button.pf-m-primary {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(255, 255, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  /* Force height */
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+/* FIX: Disconnect Button (Danger) in User Settings */
+:host(ak-user-settings-source-oauth) .pf-c-button.pf-m-danger {
+  background: rgba(220, 20, 60, 0.25) !important;
+  /* Red tint */
+  color: white !important;
+  border: 1px solid rgba(255, 100, 100, 0.3) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  transition: all 0.3s ease !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  /* Slightly smaller than primary */
+  text-transform: none !important;
+}
+
+:host(ak-user-settings-source-oauth) .pf-c-button.pf-m-danger:hover {
+  background: rgba(220, 20, 60, 0.4) !important;
+  /* Brighter red on hover */
+  border-color: rgba(255, 100, 100, 0.6) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+  color: white !important;
+}
+
+/* Secondary Button (Security Key, WebAuthn, etc.) - Glassmorphism */
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary,
+:host(ak-stage-password) .pf-c-button.pf-m-secondary,
+:host(ak-stage-authenticator-validate) .pf-c-button.pf-m-secondary,
+:host(ak-stage-authenticator-validate-code) .pf-c-button.pf-m-secondary,
+:host(ak-stage-authenticator-webauthn) .pf-c-button.pf-m-secondary,
+:host(ak-flow-executor) .pf-c-button.pf-m-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  transition: all 0.3s ease !important;
+  font-weight: 500 !important;
+  margin-top: 10px !important;
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary:hover,
+:host(ak-stage-password) .pf-c-button.pf-m-secondary:hover,
+:host(ak-stage-authenticator-validate) .pf-c-button.pf-m-secondary:hover,
+:host(ak-stage-authenticator-validate-code) .pf-c-button.pf-m-secondary:hover,
+:host(ak-stage-authenticator-webauthn) .pf-c-button.pf-m-secondary:hover,
+:host(ak-flow-executor) .pf-c-button.pf-m-secondary:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2) !important;
+  color: white !important;
+  color: white !important;
+}
+
+/* KEY ICON & GLITCH FIX */
+/* Repurpose ::before to be a Key Icon instead of a glitchy bar */
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary::before,
+:host(ak-stage-password) .pf-c-button.pf-m-secondary::before,
+:host(ak-stage-authenticator-validate) .pf-c-button.pf-m-secondary::before,
+:host(ak-flow-executor) .pf-c-button.pf-m-secondary::before {
+  content: "" !important;
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 8px !important;
+  /* Font Awesome Key Icon (White) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512' fill='white'%3E%3Cpath d='M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.6 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.2 38.6 352zM336 96a80 80 0 1 1 0 160 80 80 0 1 1 0-160z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  /* Reset any glitchy borders/backgrounds from previous states */
+  border: none !important;
+  background-color: transparent !important;
+  position: static !important;
+  transform: none !important;
+}
+
+:host(ak-stage-identification) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-password) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-identification) button.pf-m-primary:hover,
+:host(ak-stage-password) button.pf-m-primary:hover,
+:host(ak-stage-authenticator-validate) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-authenticator-validate-code) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-authenticator-validate-duo) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-authenticator-validate-webauthn) .pf-c-button.pf-m-primary:hover,
+:host(ak-user-settings) .pf-c-button.pf-m-primary:hover,
+:host(ak-user-settings-flow-executor) .pf-c-button.pf-m-primary:hover,
+:host(ak-user-settings-password) .pf-c-button.pf-m-primary:hover,
+:host(ak-user-stage-prompt) .pf-c-button.pf-m-primary:hover,
+:host(ak-form-element-horizontal) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-authenticator-static) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-prompt) .pf-c-button.pf-m-primary:hover,
+:host(ak-user-settings-source-oauth) .pf-c-button.pf-m-primary:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(255, 255, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Remove default PatternFly after element on buttons inside specific hosts */
+:host(ak-stage-identification) .pf-c-button::after,
+:host(ak-stage-password) .pf-c-button::after,
+:host(ak-stage-consent) .pf-c-button::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Footer "Forgot Password" Band */
+.pf-c-login__main-footer-band {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.pf-c-login__main-footer-band a {
+  color: rgba(255, 255, 255, 0.6) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  transition: all 0.2s ease !important;
+}
+
+.pf-c-login__main-footer-band a:hover {
+  color: white !important;
+  text-decoration: underline !important;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
+}
+

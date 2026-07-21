@@ -1,0 +1,67 @@
+/* ===== NEW AUTHENTIK BACKGROUND OVERLAY FIX ===== */
+/* The authentik update added a fixed full-viewport "background-wrapper" holding a
+   "background-default-slant" element (an opaque gray slant). On the user/library
+   pages this sat ON TOP of our theme background, hiding it (background looked cut
+   in half / gray on the top area). Make these new parts transparent so the theme
+   background image shows through everywhere, including under the transparent header. */
+[part="background-wrapper"],
+[part="background-default-slant"],
+::part(background-wrapper),
+::part(background-default-slant) {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+}
+
+/* ========================================= */
+/* === FORM INPUTS & PASSWORD TOGGLE FIX === */
+/* ========================================= */
+
+/* Fix Input Group Position to allow absolute button */
+.pf-c-input-group {
+  position: relative !important;
+  display: flex !important;
+  width: 100% !important;
+}
+
+/* Position the "Show Password" button inside the input */
+.pf-c-button.pf-m-control {
+  position: absolute !important;
+  top: 50% !important;
+  right: 5px !important;
+  transform: translateY(-50%) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  /* Very high z-index to stay above focused inputs */
+  z-index: 9999 !important;
+  padding: 5px !important;
+  margin: 0 !important;
+  height: auto !important;
+  min-width: 0 !important;
+  width: 30px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* Hover effect */
+.pf-c-button.pf-m-control:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 50% !important;
+}
+
+/* Remove borders */
+.pf-c-button.pf-m-control::after,
+.pf-c-button.pf-m-control::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure input has space */
+.pf-c-form-control {
+  padding-right: 40px !important;
+}
+

@@ -1,0 +1,42 @@
+/* ===== BRANDING LOGO SIZE ===== */
+/* Authentik's update rendered the logo oversized (333px). Shrink it. */
+.pf-c-login__main-header.pf-c-brand img.branding-logo,
+.pf-c-brand img.branding-logo,
+img.branding-logo {
+  height: 140px !important;
+  width: auto !important;
+  max-height: 140px !important;
+}
+
+/* Tighten the empty space above/below the logo so the login box isn't taller
+   than needed (default was 64px top / 24px bottom padding). */
+.pf-c-login__main-header.pf-c-brand,
+.pf-c-brand {
+  padding-top: 34px !important;
+  padding-bottom: 14px !important;
+}
+
+/* Hide empty social links container to prevent spacing issues */
+.pf-c-login__main-footer-links:empty,
+ak-brand-links:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Agrandissement exceptionnel pour le stage TOTP */
+.pf-c-login .pf-c-login__main:has(ak-stage-authenticator-totp),
+body:has(.pf-c-login) .pf-c-login__main:has(ak-stage-authenticator-totp) {
+  max-height: 90vh !important;
+  max-width: 600px !important;
+  width: auto !important;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+/* Overlay de chargement avec le même arrondi */
+ak-loading-overlay {
+  border-radius: 66px !important;
+  overflow: hidden !important;
+}
+

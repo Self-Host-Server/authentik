@@ -1,0 +1,126 @@
+/* ===== FORCE DARK MODE ===== */
+
+:root {
+  --pf-global--palette--black-50: oklab(0.9067 -0 0) !important;
+  --pf-global--palette--black-100: oklab(0.8292 -0.0007 -0.0016) !important;
+  --pf-global--palette--black-200: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--palette--black-300: oklab(0.6232 -0.0003 -0.0032) !important;
+  --pf-global--palette--black-400: oklab(0.4602 -0.0003 -0.0034) !important;
+  --pf-global--palette--black-500: oklab(0.3906 0.0001 -0.0052) !important;
+  --pf-global--palette--black-600: oklab(0.3369 0.0001 -0.0054) !important;
+  --pf-global--palette--black-700: oklab(0.2795 -0.0021 -0.0083) !important;
+  --pf-global--palette--black-800: oklab(0.2303 -0.0008 -0.0083) !important;
+  --pf-global--palette--black-900: oklab(0.1798 -0.0034 -0.0053) !important;
+  --pf-global--palette--red-9999: oklab(0.6739 0.1853 0.1022) !important;
+  --pf-global--palette--red-8888: oklab(0.723 0.153 0.0784) !important;
+  --pf-v4-global--palette--blue-300: oklab(70.367% -0.07498 -0.139) !important;
+  --ak-global--palette--blue-300: oklab(67.552% -0.05374 -0.16817) !important;
+  --pf-global--palette--blue-300: var(
+    --pf-v4-global--palette--blue-300
+  ) !important;
+  --pf-global--BackgroundColor--100: oklab(0.2303 -0.0008 -0.0083) !important;
+  --pf-global--BackgroundColor--150: oklab(0.2585 -0.0027 -0.0066) !important;
+  --pf-global--BackgroundColor--200: oklab(0.1798 -0.0034 -0.0053) !important;
+  --pf-global--BackgroundColor--300: oklab(0.2795 -0.0021 -0.0083) !important;
+  --pf-global--BackgroundColor--400: oklab(0.3369 0.0001 -0.0054) !important;
+  --pf-global--BackgroundColor--light-100: oklab(
+    0.2303 -0.0008 -0.0083
+  ) !important;
+  --pf-global--BackgroundColor--light-200: oklab(
+    0.1798 -0.0034 -0.0053
+  ) !important;
+  --pf-global--BackgroundColor--light-300: oklab(
+    0.2795 -0.0021 -0.0083
+  ) !important;
+  --pf-global--BackgroundColor--dark-100: oklab(
+    0.2303 -0.0008 -0.0083
+  ) !important;
+  --pf-global--BackgroundColor--dark-200: oklab(
+    0.1798 -0.0034 -0.0053
+  ) !important;
+  --pf-global--BackgroundColor--dark-300: oklab(
+    0.2795 -0.0021 -0.0083
+  ) !important;
+  --pf-global--BackgroundColor--dark-400: oklab(
+    0.3369 0.0001 -0.0054
+  ) !important;
+  --pf-global--BorderColor--100: oklab(0.3906 0.0001 -0.0052) !important;
+  --pf-global--BorderColor--200: oklab(0.4602 -0.0003 -0.0034) !important;
+  --pf-global--BorderColor--300: oklab(0.3906 0.0001 -0.0052) !important;
+  --pf-global--BorderColor--400: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--Color--100: oklab(0.9067 -0 0) !important;
+  --pf-global--Color--200: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--active-color--100: var(
+    --pf-v4-global--palette--blue-300
+  ) !important;
+  --pf-global--primary-color--300: oklab(0.522 -0.0434 -0.1717) !important;
+  --pf-global--primary-color--100: var(
+    --pf-global--primary-color--300
+  ) !important;
+  --pf-global--link--Color: var(--pf-v4-global--palette--blue-300) !important;
+  --pf-global--link--Color--hover: oklab(0.7706 -0.0485 -0.1012) !important;
+  --pf-global--link--Color--visited: oklab(0.7137 0.0522 -0.151) !important;
+  --pf-global--disabled-color--100: oklab(0.4602 -0.0003 -0.0034) !important;
+  --pf-global--disabled-color--200: oklab(0.3906 0.0001 -0.0052) !important;
+  --pf-global--disabled-color--300: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--icon--Color--light: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--icon--Color--dark: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--Color--dark-100: oklab(0.9067 -0 0) !important;
+  --pf-global--Color--dark-200: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--Color--light-100: oklab(0.9067 -0 0) !important;
+  --pf-global--Color--light-200: oklab(0.7407 -0.0007 -0.0017) !important;
+  --pf-global--Color--light-300: oklab(0.3659 -0.0025 -0.0061) !important;
+  --pf-global--BorderColor--dark-100: oklab(0.3906 0.0001 -0.0052) !important;
+  --pf-global--BorderColor--light-100: oklab(0.3906 0.0001 -0.0052) !important;
+  --pf-global--primary-color--light-100: oklab(
+    67.552% -0.05374 -0.16817
+  ) !important;
+  --pf-global--primary-color--dark-100: oklab(
+    67.552% -0.05374 -0.16817
+  ) !important;
+  --pf-global--link--Color--light: var(
+    --pf-v4-global--palette--blue-300
+  ) !important;
+  --pf-global--link--Color--light--hover: var(
+    --pf-global--palette--blue-200
+  ) !important;
+  --pf-global--link--Color--dark: var(
+    --pf-v4-global--palette--blue-300
+  ) !important;
+  --pf-global--link--Color--dark--hover: var(
+    --pf-global--palette--blue-200
+  ) !important;
+  --pf-global--default-color--100: var(
+    --pf-global--palette--cyan-100
+  ) !important;
+  --pf-global--default-color--300: var(
+    --pf-global--palette--cyan-200
+  ) !important;
+  --pf-global--info-color--100: var(--pf-global--palette--blue-200) !important;
+  --pf-global--info-color--200: var(--pf-global--palette--blue-50) !important;
+  --pf-global--warning-color--100: oklab(0.7864 0.0298 0.1604) !important;
+  --pf-global--warning-color--200: oklab(0.8354 0.0112 0.1471) !important;
+  --pf-global--danger-color--100: var(--pf-global--palette--red-100) !important;
+  --pf-global--danger-color--200: var(--pf-global--palette--red-50) !important;
+  --pf-global--success-color--100: oklab(0.6488 -0.1066 0.0846) !important;
+  --pf-global--success-color--200: var(
+    --pf-global--palette--green-50
+  ) !important;
+
+  /* Force browser to render standard controls in dark mode */
+  color-scheme: dark !important;
+}
+
+/* Ensure these variables are sticky even if the browser prefers light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --pf-global--BackgroundColor--100: oklab(0.2303 -0.0008 -0.0083) !important;
+    --pf-global--BackgroundColor--light-100: oklab(
+      0.2303 -0.0008 -0.0083
+    ) !important;
+    --pf-global--Color--100: oklab(0.9067 -0 0) !important;
+    --pf-global--Color--light-100: oklab(0.9067 -0 0) !important;
+    --pf-global--Color--dark-100: oklab(0.9067 -0 0) !important;
+    /* Re-apply the full block if necessary, but usually overrides are enough */
+  }
+}

@@ -1,0 +1,163 @@
+/* ========================================= */
+/* GLOBAL CHIP / BADGE FIX                   */
+/* ========================================= */
+
+/* ========================================= */
+/* ========================================= */
+/* SPECIFIC HOST CHIP FIX (USER INTERFACE)   */
+/* ========================================= */
+
+/* Target ak-chip ONLY within specific User Interface components */
+/* This ensures Admin Interface chips are NEVER touched */
+
+:host(ak-user-consent-list) ak-chip,
+:host(ak-user-consent-list) ak-chip[theme="dark"],
+:host(ak-user-token-list) ak-chip,
+:host(ak-user-token-list) ak-chip[theme="dark"],
+:host(ak-user-settings-mfa) ak-chip,
+:host(ak-user-settings-mfa) ak-chip[theme="dark"],
+:host(ak-user-session-list) ak-chip,
+:host(ak-user-session-list) ak-chip[theme="dark"],
+:host(ak-user-reputation-list) ak-chip,
+:host(ak-user-reputation-list) ak-chip[theme="dark"],
+/* FIX: Permission Chips */
+:host(ak-user-consent-list) .pf-c-chip,
+.pf-c-chip,
+ak-chip {
+  --pf-c-chip--BackgroundColor: #333333 !important;
+  --pf-c-chip__text--Color: white !important;
+  --pf-c-chip--Color: white !important;
+  color: white !important;
+}
+
+:host(ak-user-consent-list) ak-chip::part(chip),
+:host(ak-user-token-list) ak-chip::part(chip),
+:host(ak-user-settings-mfa) ak-chip::part(chip),
+:host(ak-user-session-list) ak-chip::part(chip),
+:host(ak-user-reputation-list) ak-chip::part(chip) {
+  background: #333333 !important;
+  background-color: #333333 !important;
+  background-image: none !important;
+  color: white !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+}
+
+:host(ak-user-consent-list) ak-chip::part(chip)::before,
+:host(ak-user-consent-list) ak-chip::part(chip)::after,
+:host(ak-user-token-list) ak-chip::part(chip)::before,
+:host(ak-user-token-list) ak-chip::part(chip)::after,
+:host(ak-user-settings-mfa) ak-chip::part(chip)::before,
+:host(ak-user-settings-mfa) ak-chip::part(chip)::after,
+:host(ak-user-session-list) ak-chip::part(chip)::before,
+:host(ak-user-session-list) ak-chip::part(chip)::after,
+:host(ak-user-reputation-list) ak-chip::part(chip)::before,
+:host(ak-user-reputation-list) ak-chip::part(chip)::after {
+  display: none !important;
+  content: none !important;
+}
+
+:host(ak-user-consent-list) ak-chip::part(chip):hover,
+:host(ak-user-token-list) ak-chip::part(chip):hover,
+:host(ak-user-settings-mfa) ak-chip::part(chip):hover,
+:host(ak-user-session-list) ak-chip::part(chip):hover,
+:host(ak-user-reputation-list) ak-chip::part(chip):hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+:host(ak-user-session-list) .pf-c-toolbar .pf-c-button:hover,
+:host(ak-user-settings-mfa) .pf-c-toolbar .pf-c-button:hover,
+:host(ak-user-consent-list) .pf-c-toolbar .pf-c-button:hover,
+:host(ak-user-reputation-list) .pf-c-toolbar .pf-c-button:hover,
+:host(ak-user-token-list) .pf-c-toolbar .pf-c-button:hover,
+:host(ak-user-session-list) ak-spinner-button .pf-c-button:hover,
+:host(ak-user-settings-mfa) ak-spinner-button .pf-c-button:hover,
+:host(ak-user-consent-list) ak-spinner-button .pf-c-button:hover,
+:host(ak-user-reputation-list) ak-spinner-button .pf-c-button:hover,
+:host(ak-user-token-list) ak-spinner-button .pf-c-button:hover,
+:host(ak-user-session-list) ak-spinner-button::part(spinner-button):hover,
+:host(ak-user-settings-mfa) ak-spinner-button::part(spinner-button):hover,
+:host(ak-user-consent-list) ak-spinner-button::part(spinner-button):hover,
+:host(ak-user-reputation-list) ak-spinner-button::part(spinner-button):hover,
+:host(ak-user-token-list) ak-spinner-button::part(spinner-button):hover,
+:host(ak-user-settings-mfa) .pf-c-dropdown__toggle.pf-m-primary:hover,
+:host(ak-user-token-list) .pf-c-button.pf-m-secondary:hover,
+:host(ak-user-consent-list) ak-chip:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+:host(ak-user-consent-list) ak-chip::part(chip):hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ========================================= */
+/* DASHBOARD APP ICONS REFINEMENT            */
+/* ========================================= */
+
+/* Reduce the size of large icons (User Dashboard) */
+ak-app-icon[size="pf-m-lg"] {
+  --icon-height: 3rem !important;
+  /* Reduced from 4rem */
+}
+
+/* Rounded corners for App Icons to prevent sharp rectangles */
+ak-app-icon::part(icon) {
+  border-radius: 15px !important;
+  overflow: hidden !important;
+}
+
+/* Ensure images cover the area nicely if they have backgrounds */
+ak-app-icon::part(icon image) {
+  border-radius: 15px !important;
+}
+
+.pf-c-label.pf-m-green {
+  --pf-c-label--BackgroundColor: #1c1c1c !important;
+  --pf-c-label__icon--Color: #4d9144;
+  --pf-c-label__content--before--BorderColor: #474747 !important;
+  --pf-c-label__content--Color: var(--pf-c-label--m-green__content--Color);
+  --pf-c-label__content--before--BorderColor: var(
+    --pf-c-label--m-green__content--before--BorderColor
+  );
+  --pf-c-label__content--link--hover--before--BorderColor: var(
+    --pf-c-label--m-green__content--link--hover--before--BorderColor
+  );
+  --pf-c-label__content--link--focus--before--BorderColor: var(
+    --pf-c-label--m-green__content--link--focus--before--BorderColor
+  );
+  --pf-c-label--m-outline__content--Color: var(
+    --pf-c-label--m-outline--m-green__content--Color
+  );
+  --pf-c-label--m-outline__content--before--BorderColor: #3f453f !important;
+  /* --pf-c-label--m-outline__content--link--hover--before--BorderColor: var(--pf-c-label--m-outline--m-green__content--link--hover--before--BorderColor); */
+  --pf-c-label--m-outline__content--link--focus--before--BorderColor: var(
+    --pf-c-label--m-outline--m-green__content--link--focus--before--BorderColor
+  );
+  --pf-c-label--m-editable__content--before--BorderColor: var(
+    --pf-c-label--m-green__content--before--BorderColor
+  );
+  --pf-c-label--m-editable__content--hover--before--BorderColor: var(
+    --pf-c-label--m-green__content--before--BorderColor
+  );
+  --pf-c-label--m-editable__content--focus--before--BorderColor: var(
+    --pf-c-label--m-green__content--before--BorderColor
+  );
+}
+
+.pf-c-label.pf-m-gray {
+  --pf-c-label--BackgroundColor: #1a1a1a !important;
+  --pf-c-label__icon--Color: #d91e1e !important;
+  --pf-c-label__content--Color: var(--pf-c-label--m-gray__content--Color);
+  --pf-c-label__content--before--BorderColor: var(
+    --pf-c-label--m-gray__content--before--BorderColor
+  );
+  --pf-c-label__content--link--hover--before--BorderColor: var(
+    --pf-c-label--m-gray__content--link--hover--before--BorderColor
+  );
+  --pf-c-label__content--link--focus--before--BorderColor: var(
+    --pf-c-label--m-gray__content--link--focus--before--BorderColor
+  );
+}
+

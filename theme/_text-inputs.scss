@@ -1,0 +1,151 @@
+/* Force White Text in Login Container - Shadow DOM Compatible */
+:host(ak-flow-executor) .pf-c-title,
+:host(ak-flow-executor) h1,
+:host(ak-flow-executor) h2,
+:host(ak-flow-executor) h3,
+:host(ak-flow-executor) p,
+:host(ak-flow-executor) span,
+:host(ak-flow-executor) div,
+:host(ak-flow-executor) label,
+:host(ak-flow-executor) .pf-c-form__label,
+:host(ak-stage-identification) label,
+:host(ak-stage-password) label,
+:host(ak-stage-identification) .pf-c-title,
+:host(ak-stage-password) .pf-c-title,
+:host(ak-stage-consent) .pf-c-title,
+:host(ak-stage-authenticator-validate) .pf-c-title,
+:host(ak-stage-authenticator-validate) label,
+:host(ak-stage-authenticator-validate-code) .pf-c-title,
+:host(ak-stage-authenticator-validate-code) label,
+:host(ak-stage-authenticator-validate-duo) .pf-c-title,
+:host(ak-stage-authenticator-validate-duo) label,
+:host(ak-user-settings) .pf-c-title,
+:host(ak-user-settings) label,
+:host(ak-user-settings) .pf-c-card__title,
+:host(ak-user-settings-flow-executor) .pf-c-card__title,
+:host(ak-user-settings-password) .pf-c-card__title,
+:host(ak-form-element-horizontal) label,
+:host(ak-form-element-horizontal) .pf-c-form__label,
+:host(ak-user-stage-prompt) label,
+:host(ak-user-stage-prompt) .pf-c-title,
+:host(ak-stage-prompt) label,
+:host(ak-stage-prompt) .pf-c-title {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Links in Login */
+.pf-c-login a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.pf-c-login a:hover {
+  color: white !important;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6) !important;
+  text-decoration: underline !important;
+}
+
+/* Form Inputs - Shadow DOM targeted */
+:host(ak-stage-identification) .pf-c-form-control,
+:host(ak-stage-password) .pf-c-form-control,
+:host(ak-flow-executor) .pf-c-form-control,
+:host(ak-stage-identification) input:not([type="checkbox"]),
+:host(ak-stage-password) input:not([type="checkbox"]),
+:host(ak-stage-authenticator-validate) .pf-c-form-control,
+:host(ak-stage-authenticator-validate) input:not([type="checkbox"]),
+:host(ak-stage-authenticator-validate-code) .pf-c-form-control,
+:host(ak-stage-authenticator-validate-code) input:not([type="checkbox"]),
+:host(ak-stage-authenticator-totp) .pf-c-form-control,
+:host(ak-stage-authenticator-totp) input:not([type="checkbox"]),
+:host(ak-user-settings) .pf-c-form-control,
+:host(ak-user-settings-flow-executor) .pf-c-form-control,
+:host(ak-user-settings-password) .pf-c-form-control,
+:host(ak-form-element-horizontal) .pf-c-form-control,
+:host(ak-form-element-horizontal) input,
+:host(ak-form-element-horizontal) select,
+:host(ak-user-stage-prompt) .pf-c-form-control,
+:host(ak-user-stage-prompt) input,
+:host(ak-user-stage-prompt) select,
+:host(ak-stage-prompt) .pf-c-form-control,
+:host(ak-stage-prompt) input,
+:host(ak-stage-prompt) select {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 14px !important;
+  padding: 10px 15px !important;
+  font-size: 16px !important;
+  color: white !important;
+  height: auto !important;
+  min-height: 40px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: blur(20px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(130%) !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Brighten placeholder text so it's legible against the blurred background */
+:host(ak-stage-identification) input:not([type="checkbox"])::placeholder,
+:host(ak-stage-password) input:not([type="checkbox"])::placeholder,
+:host(ak-stage-authenticator-validate)
+  input:not([type="checkbox"])::placeholder,
+:host(ak-stage-authenticator-validate-code)
+  input:not([type="checkbox"])::placeholder,
+:host(ak-stage-authenticator-totp) input:not([type="checkbox"])::placeholder,
+:host(ak-form-element-horizontal) input::placeholder,
+:host(ak-user-stage-prompt) input::placeholder,
+:host(ak-stage-prompt) input::placeholder {
+  color: rgba(255, 255, 255, 0.75) !important;
+  opacity: 1 !important;
+  font-style: normal !important;
+}
+
+/* Ensure dropdown options are readable and select text is visible */
+:host(ak-form-element-horizontal) select,
+:host(ak-user-stage-prompt) select,
+:host(ak-stage-prompt) select {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+:host(ak-form-element-horizontal) select option,
+:host(ak-user-stage-prompt) select option,
+:host(ak-stage-prompt) select option {
+  background-color: #1f1f1f !important;
+  color: white !important;
+  text-shadow: none !important;
+}
+
+:host(ak-stage-identification) .pf-c-form-control:focus,
+:host(ak-stage-password) .pf-c-form-control:focus,
+:host(ak-flow-executor) .pf-c-form-control:focus,
+:host(ak-stage-identification) input:not([type="checkbox"]):focus,
+:host(ak-stage-password) input:not([type="checkbox"]):focus,
+:host(ak-stage-authenticator-validate) .pf-c-form-control:focus,
+:host(ak-stage-authenticator-validate) input:not([type="checkbox"]):focus,
+:host(ak-stage-authenticator-validate-code) .pf-c-form-control:focus,
+:host(ak-stage-authenticator-validate-code) input:not([type="checkbox"]):focus,
+:host(ak-user-settings) .pf-c-form-control:focus,
+:host(ak-user-settings-flow-executor) .pf-c-form-control:focus,
+:host(ak-user-settings-password) .pf-c-form-control:focus,
+:host(ak-form-element-horizontal) .pf-c-form-control:focus,
+:host(ak-form-element-horizontal) input:focus,
+:host(ak-form-element-horizontal) select:focus,
+:host(ak-user-stage-prompt) .pf-c-form-control:focus,
+:host(ak-user-stage-prompt) input:focus,
+:host(ak-user-stage-prompt) select:focus,
+:host(ak-stage-prompt) .pf-c-form-control:focus,
+:host(ak-stage-prompt) input:focus,
+:host(ak-stage-prompt) select:focus {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(102, 126, 234, 0.5) !important;
+  border-width: 1.5px !important;
+  outline: none !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+

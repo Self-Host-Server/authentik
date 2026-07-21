@@ -1,0 +1,393 @@
+/* ===== ADMIN INTERFACE GLASS STYLING ===== */
+/* Same glassmorphism look as the rest of the theme, but sizing/layout stays
+   native (auto width, no transform, no display:block) since these buttons and
+   inputs live in dense tables/toolbars where the login-flow sizing would break. */
+
+/* Dashboard widgets (Quick actions, Outpost status, Recent events, etc.) had no
+   card background at all once the page background image was allowed through,
+   leaving text sitting directly on the image. Use a dark tint (not the lighter
+   glass used elsewhere) so white text stays legible over the busy background.
+   Bare (non-:host()) selectors, same as the existing .pf-c-card.pf-m-compact
+   rule above, since these widgets render inside their own nested shadow roots
+   that :host(ak-interface-admin) can't reach. */
+.pf-c-card,
+ak-aggregate-card {
+  position: relative !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-height: 450px !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
+.pf-c-card__title,
+.pf-c-card__body,
+.pf-c-card__header {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-secondary,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-primary {
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  color: white !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-primary:hover,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-secondary:hover,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+[data-ak-interface-root="ak-interface-admin"] .pf-c-select__toggle,
+[data-ak-interface-root="ak-interface-admin"] .pf-c-form-control {
+  height: auto !important;
+  min-height: 0 !important;
+  padding: initial !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: none !important;
+  color: white !important;
+}
+
+/* ===== ADMIN BUTTON STYLING ===== */
+
+:host(ak-interface-user) a[href*="/if/admin/"],
+:host(ak-interface-user-presentation) a[href*="/if/admin/"],
+:host(ak-interface-user)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary,
+:host(ak-interface-user-presentation)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary,
+:host(ak-interface-admin) a[href*="/if/user/"],
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary {
+  border-radius: 50px !important;
+  border: none !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  color: white !important;
+  padding: 8px 24px !important;
+  transition: all 0.3s ease !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+/* Button 'Yes' / Primary */
+:host(ak-stage-identification) .pf-c-button.pf-m-primary {
+  background: rgba(40, 167, 69, 0.25) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1.5px solid rgba(40, 167, 69, 0.4) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 10px 24px !important;
+  border-radius: 14px !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow:
+    0 4px 15px rgba(40, 167, 69, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  margin-top: 4px !important;
+  /* Fix for hover clipping */
+  margin-bottom: 4px !important;
+}
+
+:host(ak-interface-user) a[href*="/if/admin/"]:hover,
+:host(ak-interface-user-presentation) a[href*="/if/admin/"]:hover,
+:host(ak-interface-user)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:hover,
+:host(ak-interface-user-presentation)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:hover,
+:host(ak-interface-admin) a[href*="/if/user/"]:hover,
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  text-decoration: none !important;
+}
+
+:host(ak-interface-user) a[href*="/if/admin/"]::after,
+:host(ak-interface-user-presentation) a[href*="/if/admin/"]::after,
+:host(ak-interface-user)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary::after,
+:host(ak-interface-user-presentation)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary::after,
+:host(ak-interface-admin) a[href*="/if/user/"]::after,
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary::after {
+  border: none !important;
+  display: none !important;
+  content: none !important;
+}
+
+:host(ak-interface-user) a[href*="/if/admin/"]:focus,
+:host(ak-interface-user-presentation) a[href*="/if/admin/"]:focus,
+:host(ak-interface-user)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:focus,
+:host(ak-interface-user-presentation)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:focus,
+:host(ak-interface-admin) a[href*="/if/user/"]:focus,
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:focus {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+
+:host(ak-library-impl) .pf-c-card.pf-m-hoverable {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 20px !important;
+}
+
+:host(ak-library-impl) .pf-c-card.pf-m-hoverable:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-4px) !important;
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Remove PatternFly default hover flash/border */
+:host(ak-library-impl) .pf-c-card.pf-m-hoverable::after,
+:host(ak-library-impl) .pf-c-card.pf-m-hoverable::before,
+:host(ak-library-impl) .pf-c-card.pf-m-hoverable:hover::after,
+:host(ak-library-impl) .pf-c-card.pf-m-hoverable:hover::before {
+  display: none !important;
+  border: none !important;
+  content: none !important;
+  box-shadow: none !important;
+}
+
+:host(ak-library-impl) .pf-c-card__title,
+:host(ak-library-impl) .pf-c-card__body {
+  color: white !important;
+  text-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.9),
+    0 0 6px rgba(0, 0, 0, 0.7),
+    1px 1px 1px rgba(0, 0, 0, 0.8),
+    -1px -1px 1px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ===== DASHBOARD SEARCH BAR ===== */
+/* Fix the red underline on hover/focus to be white instead */
+
+:host(ak-library-impl) input[type="text"],
+:host(ak-library-impl) input[type="search"],
+:host(ak-library-impl) .pf-c-form-control {
+  border-bottom-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+:host(ak-library-impl) input[type="text"]:hover,
+:host(ak-library-impl) input[type="search"]:hover,
+:host(ak-library-impl) input[type="text"]:focus,
+:host(ak-library-impl) input[type="search"]:focus,
+:host(ak-library-impl) .pf-c-form-control:hover,
+:host(ak-library-impl) .pf-c-form-control:focus {
+  border-bottom-color: white !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ===== DISABLE HOVER ON SETTINGS CARDS ===== */
+/* These cards should be static containers, not interactive */
+
+:host(ak-user-settings) .pf-c-card:hover,
+:host(ak-user-settings-flow-executor) .pf-c-card:hover,
+:host(ak-user-settings-password) .pf-c-card:hover {
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+:host(ak-user-settings) .pf-c-card.pf-m-hoverable::after,
+:host(ak-user-settings) .pf-c-card.pf-m-hoverable::before,
+:host(ak-user-settings) .pf-c-card:hover::after,
+:host(ak-user-settings) .pf-c-card:hover::before,
+:host(ak-user-settings-flow-executor) .pf-c-card:hover::after,
+:host(ak-user-settings-flow-executor) .pf-c-card:hover::before,
+:host(ak-user-settings-password) .pf-c-card:hover::after,
+:host(ak-user-settings-password) .pf-c-card:hover::before {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+}
+
+/* ===== USER SETTINGS TABLES TRANSPARENCY ===== */
+/* Remove grey background from tables in user settings only */
+
+:host(ak-user-session-list) .pf-c-table,
+:host(ak-user-settings-mfa) .pf-c-table,
+:host(ak-user-consent-list) .pf-c-table,
+:host(ak-user-reputation-list) .pf-c-table,
+:host(ak-user-token-list) .pf-c-table,
+:host(ak-user-session-list) .pf-c-table tr,
+:host(ak-user-settings-mfa) .pf-c-table tr,
+:host(ak-user-consent-list) .pf-c-table tr,
+:host(ak-user-reputation-list) .pf-c-table tr,
+:host(ak-user-token-list) .pf-c-table tr {
+  background-color: transparent !important;
+  background: transparent !important;
+  --pf-c-table--BackgroundColor: transparent !important;
+}
+
+:host(ak-user-session-list) .pf-c-table tbody > tr > *,
+:host(ak-user-settings-mfa) .pf-c-table tbody > tr > *,
+:host(ak-user-consent-list) .pf-c-table tbody > tr > *,
+:host(ak-user-reputation-list) .pf-c-table tbody > tr > *,
+:host(ak-user-token-list) .pf-c-table tbody > tr > * {
+  --pf-c-table--cell--BackgroundColor: transparent !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove card background if it wraps the table */
+:host(ak-user-session-list) .pf-c-card,
+:host(ak-user-settings-mfa) .pf-c-card,
+:host(ak-user-consent-list) .pf-c-card,
+:host(ak-user-reputation-list) .pf-c-card,
+:host(ak-user-token-list) .pf-c-card {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Table Headers (Toolbar) and Footers (Pagination) */
+:host(ak-user-session-list) .pf-c-toolbar,
+:host(ak-user-settings-mfa) .pf-c-toolbar,
+:host(ak-user-consent-list) .pf-c-toolbar,
+:host(ak-user-reputation-list) .pf-c-toolbar,
+:host(ak-user-token-list) .pf-c-toolbar,
+:host(ak-user-session-list) .pf-c-pagination,
+:host(ak-user-settings-mfa) .pf-c-pagination,
+:host(ak-user-consent-list) .pf-c-pagination,
+:host(ak-user-reputation-list) .pf-c-pagination,
+:host(ak-user-token-list) .pf-c-pagination {
+  background-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  --pf-c-toolbar--BackgroundColor: transparent !important;
+}
+
+/* Toolbar Buttons (Refresh, Delete) */
+:host(ak-user-session-list) .pf-c-toolbar .pf-c-button,
+:host(ak-user-settings-mfa) .pf-c-toolbar .pf-c-button,
+:host(ak-user-consent-list) .pf-c-toolbar .pf-c-button,
+:host(ak-user-reputation-list) .pf-c-toolbar .pf-c-button,
+:host(ak-user-token-list) .pf-c-toolbar .pf-c-button,
+/* Fix specifically for ak-spinner-button which wraps the button */
+:host(ak-user-session-list) ak-spinner-button .pf-c-button,
+:host(ak-user-settings-mfa) ak-spinner-button .pf-c-button,
+:host(ak-user-consent-list) ak-spinner-button .pf-c-button,
+:host(ak-user-reputation-list) ak-spinner-button .pf-c-button,
+:host(ak-user-token-list) ak-spinner-button .pf-c-button,
+/* Target the shadow DOM part for spinner buttons */
+:host(ak-user-session-list) ak-spinner-button::part(spinner-button),
+:host(ak-user-settings-mfa) ak-spinner-button::part(spinner-button),
+:host(ak-user-consent-list) ak-spinner-button::part(spinner-button),
+:host(ak-user-reputation-list) ak-spinner-button::part(spinner-button),
+:host(ak-user-token-list) ak-spinner-button::part(spinner-button) {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  backdrop-filter: blur(5px);
+  border-radius: 6px !important;
+}
+
+/* Fix pseudo-elements that cause the blue border in PatternFly */
+:host(ak-user-session-list) ak-spinner-button::part(spinner-button)::after,
+:host(ak-user-settings-mfa) ak-spinner-button::part(spinner-button)::after,
+:host(ak-user-consent-list) ak-spinner-button::part(spinner-button)::after,
+:host(ak-user-reputation-list) ak-spinner-button::part(spinner-button)::after,
+:host(ak-user-token-list) ak-spinner-button::part(spinner-button)::after {
+  border: none !important;
+  border-color: transparent !important;
+}
+
+/* Secondary Actions in Token List (Create, etc) */
+:host(ak-user-token-list) .pf-c-button.pf-m-secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+:host(ak-user-token-list) .pf-c-button.pf-m-secondary::after {
+  border: none !important;
+  border-color: transparent !important;
+}
+
+/* Specific fix for "Enroll" dropdown toggle */
+:host(ak-user-settings-mfa) .pf-c-dropdown__toggle.pf-m-primary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+:host(ak-user-settings-mfa) .pf-c-dropdown__toggle.pf-m-primary:after {
+  border: none !important;
+}
+
+/* Search Bar Styling */
+:host(ak-table-search) .pf-c-form-control,
+:host(ak-table-search) input[type="search"] {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  border-radius: 6px !important;
+}
+
+/* Search Bar Hover - Use accent color */
+:host(ak-table-search) .pf-c-form-control:hover,
+:host(ak-table-search) input[type="search"]:hover {
+  border-color: var(--ak-accent) !important;
+}
+

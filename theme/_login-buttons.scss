@@ -1,0 +1,352 @@
+/* ===== BOUTONS OUI/NON & ACTIONS ===== */
+
+/* Container buttons */
+.pf-c-login .pf-c-form__actions,
+.pf-c-login .pf-c-form__group-control,
+body:has(.pf-c-login) .pf-c-form__actions,
+body:has(.pf-c-login) .pf-c-form__group-control {
+  display: flex !important;
+  gap: 15px !important;
+  margin-top: 25px !important;
+  justify-content: space-between !important;
+  overflow: visible !important;
+  padding: 5px !important;
+}
+
+/* Base button styles */
+.pf-c-login .pf-c-form__actions button,
+.pf-c-login .pf-c-form__group-control button,
+body:has(.pf-c-login) .pf-c-form__actions button,
+body:has(.pf-c-login) .pf-c-form__group-control button,
+.pf-c-login button[type="button"],
+body:has(.pf-c-login) button[type="button"],
+:host(ak-stage-user-login) button[type="submit"] {
+  border-radius: 14px !important;
+  padding: 10px 20px !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  text-transform: none !important;
+  border: none !important;
+  backdrop-filter: blur(20px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(130%) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  min-width: 120px !important;
+  cursor: pointer !important;
+  outline: none !important;
+}
+
+/* ========================================= */
+/* LOGIN BUTTON - FORCE WHITE GLASSMORPHISM  */
+/* ========================================= */
+
+/* Force white for identification login button */
+.pf-c-login .pf-c-form__actions button:first-child,
+.pf-c-login .pf-c-form__group-control button:first-child,
+body:has(.pf-c-login) .pf-c-form__actions button:first-child,
+body:has(.pf-c-login) .pf-c-form__group-control button:first-child,
+.pf-c-login button[type="button"]:first-of-type,
+body:has(.pf-c-login) button[type="button"]:first-of-type,
+:host(ak-stage-identification) .pf-c-button.pf-m-primary,
+:host(ak-stage-identification) button[type="submit"].pf-c-button.pf-m-primary {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  padding: 14px 24px !important;
+  border-radius: 14px !important;
+  transition: all 0.3s ease !important;
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(255, 255, 255, 0.1) !important;
+}
+
+:host(ak-stage-identification) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-identification)
+  button[type="submit"].pf-c-button.pf-m-primary:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+  transform: translateY(-2px) !important;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ========================================= */
+/* STAY CONNECTED BUTTONS (USER LOGIN STAGE) */
+/* ========================================= */
+
+/* Neutralize 'Yes' and 'No' buttons to Standard Glass Style */
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  font-weight: 500 !important;
+  padding: 10px 24px !important;
+  border-radius: 14px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  margin: 0 !important;
+  /* Reset margins if inherited */
+}
+
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary:hover,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Remove colored pseudo-elements/reflections for Stay Connected */
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary::before,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* ========================================= */
+/* SHARED ANIMATIONS & FIXES                 */
+/* ========================================= */
+
+/* Reflection effect for Login Button ONLY */
+:host(ak-stage-identification) .pf-c-button.pf-m-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  z-index: 1;
+  border-radius: 14px;
+}
+
+:host(ak-stage-identification) .pf-c-button.pf-m-primary:hover::before {
+  left: 100%;
+}
+
+/* Z-index fix for text */
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary *,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary *,
+:host(ak-stage-identification) .pf-c-button.pf-m-primary *,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary::after,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary::after,
+:host(ak-stage-identification) .pf-c-button.pf-m-primary::after,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary::after {
+  border: none !important;
+  display: none !important;
+}
+
+:host(ak-stage-user-login) .pf-c-button:focus,
+:host(ak-stage-user-login) .pf-c-button:active,
+:host(ak-stage-identification) .pf-c-button:focus,
+:host(ak-stage-identification) .pf-c-button:active {
+  outline: none !important;
+}
+
+/* Button 'No' / Secondary */
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary {
+  background: rgba(220, 53, 69, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid rgba(220, 53, 69, 0.3) !important;
+  box-shadow:
+    0 4px 15px rgba(220, 53, 69, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Reflection effect 'No' */
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary::before,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 50%,
+    transparent 100%
+  );
+  transition: left 0.6s ease;
+  z-index: 1;
+  border-radius: 14px;
+}
+
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary:hover::before,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary:hover::before {
+  left: 100%;
+}
+
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary:hover,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary:hover {
+  background: rgba(220, 53, 69, 0.25) !important;
+  border-color: rgba(220, 53, 69, 0.45) !important;
+  color: white !important;
+  transform: translateY(-1px) !important;
+  box-shadow:
+    0 8px 25px rgba(220, 53, 69, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Z-index fix for text */
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary *,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary *,
+:host(ak-stage-identification) .pf-c-button.pf-m-primary *,
+:host(ak-stage-identification) .pf-c-button.pf-m-secondary * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ========================================= */
+/* SOCIAL LOGIN BUTTONS (GLASSMORPHISM)      */
+/* ========================================= */
+
+/* Base style for all social login buttons */
+:host(ak-stage-identification) .source-button {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  border-radius: 12px !important;
+  padding: 10px 20px !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  position: relative !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  gap: 8px !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  overflow: hidden !important;
+}
+
+:host(ak-stage-identification) .source-button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Discord-specific branding */
+:host(ak-stage-identification) button[name*="discord"].source-button {
+  background: rgba(88, 101, 242, 0.25) !important;
+  border-color: rgba(88, 101, 242, 0.4) !important;
+  box-shadow:
+    0 4px 12px rgba(88, 101, 242, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+:host(ak-stage-identification) button[name*="discord"].source-button:hover {
+  background: rgba(88, 101, 242, 0.35) !important;
+  border-color: rgba(88, 101, 242, 0.6) !important;
+  box-shadow:
+    0 8px 20px rgba(88, 101, 242, 0.35),
+    0 0 0 2px rgba(88, 101, 242, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Shine effect on hover for all social buttons */
+:host(ak-stage-identification) .source-button:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -70%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 60%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  animation: socialShine 0.65s linear 1;
+  pointer-events: none;
+}
+
+@keyframes socialShine {
+  100% {
+    left: 130%;
+  }
+}
+
+/* Icon styling within social buttons */
+:host(ak-stage-identification) .source-button img,
+:host(ak-stage-identification) .source-button span.pf-c-button__icon {
+  width: 18px !important;
+  height: 18px !important;
+  flex-shrink: 0;
+}
+
+/* Make Discord icon white */
+:host(ak-stage-identification) button[name*="discord"].source-button img {
+  filter: brightness(0) invert(1);
+}
+
+/* Google-specific branding */
+:host(ak-stage-identification) button[name*="google"].source-button {
+  background: rgba(66, 133, 244, 0.25) !important;
+  border-color: rgba(66, 133, 244, 0.4) !important;
+}
+
+:host(ak-stage-identification) button[name*="google"].source-button:hover {
+  background: rgba(66, 133, 244, 0.35) !important;
+  border-color: rgba(66, 133, 244, 0.6) !important;
+  box-shadow:
+    0 8px 20px rgba(66, 133, 244, 0.35),
+    0 0 0 2px rgba(66, 133, 244, 0.2) !important;
+}
+
+:host(ak-stage-user-login) .pf-c-button.pf-m-primary::after,
+:host(ak-stage-user-login) .pf-c-button.pf-m-secondary::after {
+  border: none !important;
+  display: none !important;
+}
+
+:host(ak-stage-user-login) .pf-c-button:focus,
+:host(ak-stage-user-login) .pf-c-button:active {
+  outline: none !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pf-c-login .pf-c-form__actions,
+  body:has(.pf-c-login) .pf-c-form__actions {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  :host(ak-stage-user-login) .pf-c-button.pf-m-primary,
+  :host(ak-stage-user-login) .pf-c-button.pf-m-secondary {
+    width: 100% !important;
+    min-width: auto !important;
+    padding: 14px 28px !important;
+  }
+}
