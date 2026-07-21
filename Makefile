@@ -29,8 +29,8 @@ up:
 	docker compose up -d
 
 # Compile the SCSS partials in theme/ into the single theme.css uploaded via
-# Admin Interface -> Customization -> Blueprints/Files. Requires the `sass`
-# CLI (dart-sass) on PATH.
+# Admin Interface -> Customization -> Blueprints/Files. Requires `sass`
+# (npm install sass) with node/npm on PATH.
 theme:
-	@command -v sass >/dev/null || (echo "sass not found on PATH (install dart-sass, e.g. via conda)" && exit 1)
-	sass theme/theme.scss theme.css --style=expanded --no-source-map
+	@command -v npx >/dev/null || (echo "npx not found on PATH (activate the conda env with node/npm)" && exit 1)
+	npx --no-install sass theme/theme.scss theme.css --style=expanded --no-source-map
