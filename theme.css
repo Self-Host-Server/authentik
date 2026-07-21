@@ -2035,20 +2035,6 @@ ak-app-icon::part(icon image) {
   border-radius: 15px !important;
 }
 
-/* Neutralize authentik's per-app hashed fallback color (random blue/black/gradient
-   squares for apps without a configured icon) so the "no icon" letter avatar uses
-   the same glass style as the rest of the theme and reads well over any background. */
-:host(ak-library-impl) ak-app-icon::part(icon) {
-  background: rgba(0, 0, 0, 0.45) !important;
-  background-color: rgba(0, 0, 0, 0.45) !important;
-  background-image: none !important;
-  backdrop-filter: blur(10px) !important;
-  -webkit-backdrop-filter: blur(10px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.18) !important;
-  color: white !important;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
-}
-
 .pf-c-label.pf-m-green {
   --pf-c-label--BackgroundColor: #1c1c1c !important;
   --pf-c-label__icon--Color: #4d9144;
