@@ -1598,6 +1598,28 @@ ak-loading-overlay {
    native (auto width, no transform, no display:block) since these buttons and
    inputs live in dense tables/toolbars where the login-flow sizing would break. */
 
+/* Dashboard widgets (Quick actions, Outpost status, Recent events, etc.) had no
+   card background at all once the page background image was allowed through,
+   leaving text sitting directly on the image. Use a dark tint (not the lighter
+   glass used elsewhere) so white text stays legible over the busy background. */
+:host(ak-interface-admin) .pf-c-card,
+:host(ak-interface-admin) ak-aggregate-card {
+  background: rgba(0, 0, 0, 0.45) !important;
+  backdrop-filter: blur(16px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
+}
+
+:host(ak-interface-admin) .pf-c-card__title,
+:host(ak-interface-admin) .pf-c-card__body,
+:host(ak-interface-admin) .pf-c-card__header,
+:host(ak-interface-admin) .pf-c-title {
+  color: white !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
+}
+
 [data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-plain,
 [data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-secondary,
 [data-ak-interface-root="ak-interface-admin"] .pf-c-button.pf-m-primary {
