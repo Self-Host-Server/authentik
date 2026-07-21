@@ -993,8 +993,10 @@ ak-loading-overlay {
 /* Brighten placeholder text so it's legible against the blurred background */
 :host(ak-stage-identification) input:not([type="checkbox"])::placeholder,
 :host(ak-stage-password) input:not([type="checkbox"])::placeholder,
-:host(ak-stage-authenticator-validate) input:not([type="checkbox"])::placeholder,
-:host(ak-stage-authenticator-validate-code) input:not([type="checkbox"])::placeholder,
+:host(ak-stage-authenticator-validate)
+  input:not([type="checkbox"])::placeholder,
+:host(ak-stage-authenticator-validate-code)
+  input:not([type="checkbox"])::placeholder,
 :host(ak-stage-authenticator-totp) input:not([type="checkbox"])::placeholder,
 :host(ak-form-element-horizontal) input::placeholder,
 :host(ak-user-stage-prompt) input::placeholder,
