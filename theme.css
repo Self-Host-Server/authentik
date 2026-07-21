@@ -1651,6 +1651,10 @@ ak-loading-overlay {
   a.pf-c-button.pf-m-secondary,
 :host(ak-interface-user-presentation)
   .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary,
+:host(ak-interface-admin) a[href*="/if/user/"],
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
   a.pf-c-button.pf-m-secondary {
   border-radius: 50px !important;
   border: none !important;
@@ -1696,6 +1700,10 @@ ak-loading-overlay {
   a.pf-c-button.pf-m-secondary:hover,
 :host(ak-interface-user-presentation)
   .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:hover,
+:host(ak-interface-admin) a[href*="/if/user/"]:hover,
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
   a.pf-c-button.pf-m-secondary:hover {
   background: rgba(255, 255, 255, 0.25) !important;
   transform: translateY(-2px) !important;
@@ -1713,6 +1721,10 @@ ak-loading-overlay {
   a.pf-c-button.pf-m-secondary::after,
 :host(ak-interface-user-presentation)
   .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary::after,
+:host(ak-interface-admin) a[href*="/if/user/"]::after,
+:host(ak-interface-admin)
+  .pf-c-page__header-tools-item
   a.pf-c-button.pf-m-secondary::after {
   border: none !important;
   display: none !important;
@@ -1725,6 +1737,10 @@ ak-loading-overlay {
   .pf-c-page__header-tools-item
   a.pf-c-button.pf-m-secondary:focus,
 :host(ak-interface-user-presentation)
+  .pf-c-page__header-tools-item
+  a.pf-c-button.pf-m-secondary:focus,
+:host(ak-interface-admin) a[href*="/if/user/"]:focus,
+:host(ak-interface-admin)
   .pf-c-page__header-tools-item
   a.pf-c-button.pf-m-secondary:focus {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
