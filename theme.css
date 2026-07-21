@@ -1608,8 +1608,9 @@ ak-loading-overlay {
 .pf-c-card,
 ak-aggregate-card {
   position: relative !important;
-  overflow: hidden !important;
-  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  max-height: 560px !important;
   background: rgba(0, 0, 0, 0.45) !important;
   backdrop-filter: blur(16px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
