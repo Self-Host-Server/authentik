@@ -1433,6 +1433,39 @@ ak-loading-overlay {
   border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
+/* Sidebar nav links: give them the same glass hover/active treatment as
+   buttons and cards elsewhere, instead of PatternFly's default flat
+   highlight and blue left-border accent on the active item. */
+.pf-c-nav__link {
+  border-radius: 10px !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  transition: all 0.2s ease !important;
+}
+
+.pf-c-nav__link:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+.pf-c-nav__link.pf-m-current,
+.pf-c-nav__item.pf-m-current > .pf-c-nav__link {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Remove PatternFly's default blue accent bar on the active nav item */
+.pf-c-nav__link::after,
+.pf-c-nav__link.pf-m-current::after {
+  display: none !important;
+  content: none !important;
+  border: none !important;
+}
+
+.pf-c-nav__section-title {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
 /* Header */
 .pf-c-page__header,
 .pf-c-page__header-tools {
