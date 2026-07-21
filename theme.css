@@ -1433,10 +1433,45 @@ ak-loading-overlay {
   border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
+/* Top header bar (the <ak-page-navbar> custom element: page title, hamburger
+   toggle, command palette button) - it has its own shadow root, confirmed via
+   DevTools, so it needs :host(ak-page-navbar) rather than a bare selector.
+   Its internal .main-content div paints background-color: var(--pf-c-page__main-nav--BackgroundColor),
+   a solid opaque color, on top of the blur/tint set on the outer
+   .pf-c-page__header - override both the variable and the element directly
+   so the background image actually shows through. */
+:host(ak-page-navbar) {
+  --pf-c-page__main-nav--BackgroundColor: transparent !important;
+}
+
+:host(ak-page-navbar) .main-content {
+  background: rgba(0, 0, 0, 0.4) !important;
+  background-color: rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(18px) !important;
+  -webkit-backdrop-filter: blur(18px) !important;
+}
+
+:host(ak-page-navbar) .pf-c-button.pf-m-plain {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 8px !important;
+  color: white !important;
+  transition: all 0.2s ease !important;
+}
+
+:host(ak-page-navbar) .pf-c-button.pf-m-plain:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
 /* Sidebar nav links: give them the same glass hover/active treatment as
    buttons and cards elsewhere, instead of PatternFly's default flat
-   highlight and blue left-border accent on the active item. */
+   highlight and blue left-border accent on the active item. The link fills
+   its <li> edge-to-edge by default, so border-radius alone doesn't read as
+   "rounded" - it needs margin to actually float clear of the sidebar edges. */
 .pf-c-nav__link {
+  width: auto !important;
+  margin: 2px 10px !important;
   border-radius: 10px !important;
   color: rgba(255, 255, 255, 0.85) !important;
   transition: all 0.2s ease !important;
@@ -1449,9 +1484,11 @@ ak-loading-overlay {
 
 .pf-c-nav__link.pf-m-current,
 .pf-c-nav__item.pf-m-current > .pf-c-nav__link {
-  background: rgba(255, 255, 255, 0.15) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
   color: white !important;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
 }
 
 /* Remove PatternFly's default blue accent bar on the active nav item */
