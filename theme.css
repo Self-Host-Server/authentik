@@ -2041,19 +2041,6 @@ ak-app-icon::part(icon image) {
     justify-content: center !important;
 }
 
-/* If no match found, fallback to aria-label or just blank */
-content: attr(aria-label);
-font-size: 14px !important;
-font-weight: 500 !important;
-color: rgba(255, 255, 255, 0.9) !important;
-white-space: nowrap !important;
-display: block !important;
-text-transform: capitalize !important;
-}
-
-/* Ensure nice casing */
-}
-
 /* Resize the icon (FontAwesome or SVG) */
 .pf-c-login__main-footer-links-item-link i,
 .pf-c-login__main-footer-links-item-link svg {
