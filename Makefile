@@ -1,4 +1,4 @@
-.PHONY: update up theme
+.PHONY: update up theme format
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
@@ -34,3 +34,6 @@ up:
 theme:
 	@command -v npx >/dev/null || (echo "npx not found on PATH (activate the conda env with node/npm)" && exit 1)
 	npx --no-install sass theme/theme.scss theme.css --style=expanded --no-source-map
+
+format:
+	npx --no-install prettier --write "**/*.{json,yml,yaml,md,scss}"
