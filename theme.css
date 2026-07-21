@@ -1681,9 +1681,9 @@ ak-aggregate-card {
   overflow-x: hidden !important;
   overflow-y: auto !important;
   max-height: 450px !important;
-  background: rgba(0, 0, 0, 0.45) !important;
-  backdrop-filter: blur(16px) saturate(120%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(120%) !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 16px !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35) !important;
