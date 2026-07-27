@@ -27,8 +27,10 @@ update:
 
 up:
 	docker compose up -d
+	make portainer-agent
 
 portainer-agent:
+	docker compose -f portainer-agent.compose.yml pull
 	docker compose -f portainer-agent.compose.yml up -d
 
 # Compile the SCSS partials in theme/ into the single theme.css uploaded via
