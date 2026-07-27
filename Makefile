@@ -21,9 +21,11 @@ update:
 	elif ! git diff --quiet -- $(COMPOSE_FILE); then \
 		git add $(COMPOSE_FILE); \
 		git commit -m "Bump authentik image tag to $(LATEST_TAG)"; \
+		git push; \
 	else \
 		echo "$(COMPOSE_FILE) unchanged, nothing to commit"; \
 	fi
+	make up
 
 up:
 	docker compose up -d
