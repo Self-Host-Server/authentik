@@ -11,6 +11,9 @@ update:
 	@test -n "$(LATEST_TAG)" || (echo "Could not resolve latest authentik version" && exit 1)
 	@echo "Latest authentik version: $(LATEST_TAG)"
 	wget -O $(COMPOSE_FILE) https://goauthentik.io/version/$(LATEST_MINOR)/lifecycle/container/compose.yml
+	@if ! grep -q '^networks:' $(COMPOSE_FILE); then \
+		printf '\nnetworks:\n  default:\n    name: authentik_default\n' >> $(COMPOSE_FILE); \
+	fi
 	@if [ -f .env ]; then \
 		sed -i 's/^AUTHENTIK_TAG=.*/AUTHENTIK_TAG=$(LATEST_TAG)/' .env; \
 	else \
