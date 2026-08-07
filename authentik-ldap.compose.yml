@@ -7,6 +7,10 @@ services:
       - "389:3389" # LDAP
       - "636:6636" # LDAPS
     environment:
-      AUTHENTIK_HOST: "http://authentik-server:9000"
+      AUTHENTIK_HOST: "http://server:9000"
       AUTHENTIK_INSECURE: "true"
       AUTHENTIK_TOKEN: "YOUR_AUTHENTIK_OUTPOST_TOKEN"
+networks:
+  default:
+    name: authentik_default
+    external: true

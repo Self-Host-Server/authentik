@@ -65,3 +65,6 @@ services:
 volumes:
   database:
     driver: local
+networks:
+  default:
+    name: authentik_default
