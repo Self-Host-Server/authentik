@@ -1600,6 +1600,12 @@ ak-aggregate-card {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
 }
 
+/* backdrop-filter on an ancestor creates a new containing block for
+   position:fixed descendants, so a card hosting an <ak-forms-modal>
+   (e.g. provider "Edit" buttons) traps that modal's fixed-position box
+   inside itself instead of the viewport - then this card's own
+   max-height/overflow clips it down to a sliver. Drop those three
+   properties wherever a modal lives inside the card. */
 .pf-c-card:has(ak-forms-modal),
 .pf-c-card:has(.pf-c-modal-box) {
   backdrop-filter: none !important;
