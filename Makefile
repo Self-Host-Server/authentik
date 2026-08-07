@@ -31,7 +31,7 @@ update:
 	make up
 
 up:
-	docker compose up -d
+	docker compose up -d --build
 	make portainer-agent
 	make ldap
 
