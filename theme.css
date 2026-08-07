@@ -1600,6 +1600,14 @@ ak-aggregate-card {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6) !important;
 }
 
+.pf-c-card:has(ak-forms-modal),
+.pf-c-card:has(.pf-c-modal-box) {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  overflow: visible !important;
+  max-height: none !important;
+}
+
 [data-ak-interface-root=ak-interface-admin] .pf-c-button.pf-m-plain,
 [data-ak-interface-root=ak-interface-admin] .pf-c-button.pf-m-secondary,
 [data-ak-interface-root=ak-interface-admin] .pf-c-button.pf-m-primary {
