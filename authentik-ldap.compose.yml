@@ -6,8 +6,8 @@ services:
     env_file:
       - .env
     ports:
-      - "389:3389" # LDAP
-      - "636:6636" # LDAPS
+      - "3890:3389" # LDAP
+      - "6360:6636" # LDAPS
     environment:
       AUTHENTIK_HOST: "http://server:9000"
       AUTHENTIK_INSECURE: "true"
