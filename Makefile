@@ -1,4 +1,4 @@
-.PHONY: update up theme format hooks portainer-agent
+.PHONY: update up theme format hooks portainer-agent ldap
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
@@ -33,10 +33,15 @@ update:
 up:
 	docker compose up -d
 	make portainer-agent
+	make ldap
 
 portainer-agent:
 	docker compose -f portainer-agent.compose.yml pull
 	docker compose -f portainer-agent.compose.yml up -d
+
+ldap:
+	docker compose -f authentik-ldap.compose.yml pull
+	docker compose -f authentik-ldap.compose.yml up -d
 
 # Compile the SCSS partials in theme/ into the single theme.css uploaded via
 # Admin Interface -> Customization -> Blueprints/Files. Requires `sass`
