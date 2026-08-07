@@ -1,0 +1,12 @@
+services:
+  authentik-ldap:
+    image: ghcr.io/goauthentik/ldap:2026.6.1 # Match your Authentik version
+    container_name: authentik-ldap
+    restart: unless-stopped
+    ports:
+      - "389:3389" # LDAP
+      - "636:6636" # LDAPS
+    environment:
+      AUTHENTIK_HOST: "http://authentik-server:9000"
+      AUTHENTIK_INSECURE: "true"
+      AUTHENTIK_TOKEN: "YOUR_AUTHENTIK_OUTPOST_TOKEN"
