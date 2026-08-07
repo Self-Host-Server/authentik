@@ -37,11 +37,11 @@ up:
 
 portainer-agent:
 	docker compose -f portainer-agent.compose.yml pull
-	docker compose -f portainer-agent.compose.yml up -d
+	docker compose -f portainer-agent.compose.yml up -d --build
 
 ldap:
 	docker compose -f authentik-ldap.compose.yml pull
-	docker compose -f authentik-ldap.compose.yml up -d
+	docker compose -f authentik-ldap.compose.yml up -d --build
 
 # Compile the SCSS partials in theme/ into the single theme.css uploaded via
 # Admin Interface -> Customization -> Blueprints/Files. Requires `sass`
