@@ -20,7 +20,6 @@ update:
 		echo "Not a git repository, skipping commit"; \
 	elif ! git diff --quiet -- $(COMPOSE_FILE); then \
 		git add $(COMPOSE_FILE); \
-		git commit -m "Bump authentik image tag to $(LATEST_TAG)"; \
 	else \
 		echo "$(COMPOSE_FILE) unchanged, nothing to commit"; \
 	fi
