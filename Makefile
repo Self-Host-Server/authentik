@@ -1,4 +1,4 @@
-.PHONY: update up theme format hooks portainer-agent ldap
+.PHONY: update up down theme format hooks portainer-agent ldap
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
@@ -30,7 +30,13 @@ update:
 	fi
 	make up
 
+down:
+	docker compose down --remove-orphans
+	docker compose -f portainer-agent.compose.yml down --remove-orphans
+	docker compose -f authentik-ldap.compose.yml down --remove-orphans
+
 up:
+	make down
 	docker compose up -d --build
 	make portainer-agent
 	make ldap
