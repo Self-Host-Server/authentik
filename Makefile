@@ -29,6 +29,7 @@ update:
 		echo "$(COMPOSE_FILE) unchanged, nothing to commit"; \
 	fi
 	make up
+	docker system prune -fa
 
 down:
 	docker compose down --remove-orphans
