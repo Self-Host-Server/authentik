@@ -7,6 +7,10 @@ LATEST_MINOR := $(shell echo $(LATEST_TAG) | cut -d. -f1-2)
 # Use docker-compose.yml if that's already the file in use, otherwise compose.yml
 COMPOSE_FILE := $(shell [ -f docker-compose.yml ] && echo docker-compose.yml || echo compose.yml)
 
+# All three stacks combined, so every invocation recognizes each other's
+# containers as part of the same project instead of flagging them as orphans.
+COMPOSE_FILES := -f $(COMPOSE_FILE) -f portainer-agent.compose.yml -f authentik-ldap.compose.yml
+
 update:
 	@test -n "$(LATEST_TAG)" || (echo "Could not resolve latest authentik version" && exit 1)
 	@echo "Latest authentik version: $(LATEST_TAG)"
@@ -32,23 +36,21 @@ update:
 	docker system prune -fa
 
 down:
-	docker compose down --remove-orphans
-	docker compose -f portainer-agent.compose.yml down --remove-orphans
-	docker compose -f authentik-ldap.compose.yml down --remove-orphans
+	docker compose $(COMPOSE_FILES) down --remove-orphans
 
 up:
 	make down
-	docker compose up -d --build
+	docker compose $(COMPOSE_FILES) up -d --build
 	make portainer-agent
 	make ldap
 
 portainer-agent:
-	docker compose -f portainer-agent.compose.yml pull
-	docker compose -f portainer-agent.compose.yml up -d --build
+	docker compose $(COMPOSE_FILES) pull agent
+	docker compose $(COMPOSE_FILES) up -d --build agent
 
 ldap:
-	docker compose -f authentik-ldap.compose.yml pull
-	docker compose -f authentik-ldap.compose.yml up -d --build
+	docker compose $(COMPOSE_FILES) pull authentik-ldap
+	docker compose $(COMPOSE_FILES) up -d --build authentik-ldap
 
 # Compile the SCSS partials in theme/ into the single theme.css uploaded via
 # Admin Interface -> Customization -> Blueprints/Files. Requires `sass`
