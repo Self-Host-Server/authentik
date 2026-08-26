@@ -19,7 +19,11 @@ update:
 		printf '\nnetworks:\n  default:\n    name: authentik_default\n' >> $(COMPOSE_FILE); \
 	fi
 	@if [ -f .env ]; then \
-		sed -i 's/^AUTHENTIK_TAG=.*/AUTHENTIK_TAG=$(LATEST_TAG)/' .env; \
+		if grep -q '^AUTHENTIK_TAG=' .env; then \
+			sed -i 's/^AUTHENTIK_TAG=.*/AUTHENTIK_TAG=$(LATEST_TAG)/' .env; \
+		else \
+			echo "AUTHENTIK_TAG=$(LATEST_TAG)" >> .env; \
+		fi; \
 	else \
 		echo "No .env found, skipping AUTHENTIK_TAG update (set AUTHENTIK_TAG=$(LATEST_TAG) manually)"; \
 	fi
