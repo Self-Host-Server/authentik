@@ -1419,11 +1419,22 @@ ak-loading-overlay {
   box-shadow: none !important;
 }
 
-.pf-c-page > .pf-c-page__header {
+/* Tag-qualified (header, not the bare class) because a second, unrelated
+   element - the "Application Dashboard" title bar in the main content area -
+   coincidentally reuses the pf-c-page__header class on a <div>. Both are
+   siblings under .pf-c-page and backdrop-filter makes each its own stacking
+   context; without an explicit z-index, sibling stacking contexts paint in
+   DOM order, so that later div sits on top of the real nav header and
+   swallows clicks on anything (e.g. the account-switcher dropdown) that
+   visually overflows the header's box. */
+.pf-c-page > header.pf-c-page__header {
   background: rgba(0, 0, 0, 0.4) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 300 !important;
 }
 
 /* IOS/Mobile Fix: .pf-c-page needs relative positioning, fixed bg moved to ::before */
