@@ -74,6 +74,6 @@ hooks:
 
 down:
 	git pull
-	docker compose $(COMPOSE_FILES) down agent
-	docker compose $(COMPOSE_FILES) down authentik-ldap
-	docker compose $(COMPOSE_FILES) down
+	docker compose $(COMPOSE_FILES) down --remove-orphans agent
+	docker compose $(COMPOSE_FILES) down --remove-orphans authentik-ldap
+	docker compose $(COMPOSE_FILES) down --remove-orphans
