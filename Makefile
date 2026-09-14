@@ -74,3 +74,8 @@ format:
 hooks:
 	git config core.hooksPath .githooks
 	chmod +x .githooks/pre-commit
+
+down:
+	docker compose $(COMPOSE_FILES) down agent
+	docker compose $(COMPOSE_FILES) down authentik-ldap
+	docker compose $(COMPOSE_FILES) down
