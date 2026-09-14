@@ -76,6 +76,7 @@ hooks:
 	chmod +x .githooks/pre-commit
 
 down:
+	git pull
 	docker compose $(COMPOSE_FILES) down agent
 	docker compose $(COMPOSE_FILES) down authentik-ldap
 	docker compose $(COMPOSE_FILES) down
