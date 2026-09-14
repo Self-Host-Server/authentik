@@ -12,6 +12,7 @@ COMPOSE_FILE := $(shell [ -f docker-compose.yml ] && echo docker-compose.yml || 
 COMPOSE_FILES := -f $(COMPOSE_FILE) -f portainer-agent.compose.yml -f authentik-ldap.compose.yml
 
 update:
+	git pull
 	@test -n "$(LATEST_TAG)" || (echo "Could not resolve latest authentik version" && exit 1)
 	@echo "Latest authentik version: $(LATEST_TAG)"
 	wget -O $(COMPOSE_FILE) https://goauthentik.io/version/$(LATEST_MINOR)/lifecycle/container/compose.yml
@@ -37,6 +38,8 @@ update:
 		echo "$(COMPOSE_FILE) unchanged, nothing to commit"; \
 	fi
 	make up
+	git status
+	git push
 	docker system prune -fa
 
 down:
