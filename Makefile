@@ -1,4 +1,4 @@
-.PHONY: update up down theme format hooks portainer-agent ldap down
+.PHONY: update up theme format hooks portainer-agent ldap down
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
