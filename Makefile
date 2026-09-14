@@ -42,9 +42,6 @@ update:
 	git push
 	docker system prune -fa
 
-down:
-	docker compose $(COMPOSE_FILES) down --remove-orphans
-
 up:
 	docker compose $(COMPOSE_FILES) up -d --build
 	make portainer-agent
