@@ -92,8 +92,12 @@ ak-aggregate-card {
 /* The toolbar/table sizing above also caught modal-box forms (e.g. the
    provider edit dialogs), collapsing their fields down to slivers.
    Revert to PatternFly's own sizing there instead of guessing pixel values. */
-[data-ak-interface-root="ak-interface-admin"] .pf-c-modal-box .pf-c-form-control,
-[data-ak-interface-root="ak-interface-admin"] .pf-c-modal-box .pf-c-select__toggle {
+[data-ak-interface-root="ak-interface-admin"]
+  .pf-c-modal-box
+  .pf-c-form-control,
+[data-ak-interface-root="ak-interface-admin"]
+  .pf-c-modal-box
+  .pf-c-select__toggle {
   height: revert !important;
   min-height: revert !important;
   padding: revert !important;
