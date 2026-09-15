@@ -1,0 +1,23 @@
+[tool.tox]
+env_list = ["makefile-lint"]
+
+[tool.tox.env_run_base]
+package = "skip"
+
+[tool.tox.env.makefile-lint]
+description = "Lint the Makefile with checkmake"
+skip_install = true
+allowlist_externals = ["docker"]
+commands = [
+    [
+        "docker",
+        "run",
+        "--rm",
+        "-v",
+        "{tox_root}:/mnt",
+        "--entrypoint",
+        "/checkmake",
+        "docker.io/mrtazz/checkmake:latest",
+        "/mnt/Makefile",
+    ],
+]
