@@ -10,6 +10,16 @@ COMPOSE_FILE := $(shell [ -f docker-compose.yml ] && echo docker-compose.yml || 
 # All three stacks combined, so every invocation recognizes each other's
 # containers as part of the same project instead of flagging them as orphans.
 COMPOSE_FILES := -f $(COMPOSE_FILE) -f portainer-agent.compose.yml -f authentik-ldap.compose.yml
+COMPOSE := docker compose $(COMPOSE_FILES)
+
+define compose-up-service
+	$(COMPOSE) pull $(1)
+	$(COMPOSE) up -d --build $(1)
+endef
+
+define compose-down-service
+	$(COMPOSE) down --remove-orphans $(1)
+endef
 
 update:
 	git pull
@@ -43,17 +53,15 @@ update:
 	docker system prune -fa
 
 up:
-	docker compose $(COMPOSE_FILES) up -d --build
+	$(COMPOSE) up -d --build
 	make portainer-agent
 	make ldap
 
 portainer-agent:
-	docker compose $(COMPOSE_FILES) pull agent
-	docker compose $(COMPOSE_FILES) up -d --build agent
+	$(call compose-up-service,agent)
 
 ldap:
-	docker compose $(COMPOSE_FILES) pull authentik-ldap
-	docker compose $(COMPOSE_FILES) up -d --build authentik-ldap
+	$(call compose-up-service,authentik-ldap)
 
 # Compile the SCSS partials in theme/ into the single theme.css uploaded via
 # Admin Interface -> Customization -> Blueprints/Files. Requires `sass`
@@ -74,6 +82,6 @@ hooks:
 
 down:
 	git pull
-	docker compose $(COMPOSE_FILES) down --remove-orphans agent
-	docker compose $(COMPOSE_FILES) down --remove-orphans authentik-ldap
-	docker compose $(COMPOSE_FILES) down --remove-orphans
+	$(call compose-down-service,agent)
+	$(call compose-down-service,authentik-ldap)
+	$(COMPOSE) down --remove-orphans
