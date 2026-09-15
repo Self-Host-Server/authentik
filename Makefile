@@ -1,4 +1,4 @@
-.PHONY: update up theme format hooks portainer-agent ldap down
+.PHONY: update pull-latest fetch-compose update-env-tag commit-compose redeploy up theme format hooks portainer-agent ldap down
 
 # Resolve the latest authentik release tag from GitHub, e.g. "2026.5.4"
 LATEST_TAG := $(shell curl -fsSL https://api.github.com/repos/goauthentik/authentik/releases/latest | grep '"tag_name"' | sed -E 's/.*"version\/([^"]+)".*/\1/')
@@ -22,13 +22,24 @@ define compose-down-service
 endef
 
 update:
+	make pull-latest
+	make fetch-compose
+	make update-env-tag
+	make commit-compose
+	make redeploy
+
+pull-latest:
 	git pull
 	@test -n "$(LATEST_TAG)" || (echo "Could not resolve latest authentik version" && exit 1)
 	@echo "Latest authentik version: $(LATEST_TAG)"
+
+fetch-compose:
 	wget -O $(COMPOSE_FILE) https://goauthentik.io/version/$(LATEST_MINOR)/lifecycle/container/compose.yml
 	@if ! grep -q '^networks:' $(COMPOSE_FILE); then \
 		printf '\nnetworks:\n  default:\n    name: authentik_default\n' >> $(COMPOSE_FILE); \
 	fi
+
+update-env-tag:
 	@if [ -f .env ]; then \
 		if grep -q '^AUTHENTIK_TAG=' .env; then \
 			sed -i 's/^AUTHENTIK_TAG=.*/AUTHENTIK_TAG=$(LATEST_TAG)/' .env; \
@@ -38,6 +49,8 @@ update:
 	else \
 		echo "No .env found, skipping AUTHENTIK_TAG update (set AUTHENTIK_TAG=$(LATEST_TAG) manually)"; \
 	fi
+
+commit-compose:
 	@if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
 		echo "Not a git repository, skipping commit"; \
 	elif ! git diff --quiet -- $(COMPOSE_FILE); then \
@@ -47,6 +60,8 @@ update:
 	else \
 		echo "$(COMPOSE_FILE) unchanged, nothing to commit"; \
 	fi
+
+redeploy:
 	make up
 	git status
 	git push
