@@ -2,3 +2,4 @@
 .lh
 node_modules
 *:Zone.Identifier
+.claude/
